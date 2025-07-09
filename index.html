@@ -3,13 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang web của tôi</title>
+    <title>O_o</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f1f1f1;
             text-align: center;
             padding: 50px;
+            background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .image-container {
+      width: 300px;
+      height: auto;
+      perspective: 1000px;
+    }
+
+    .fancy-img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .fancy-img:hover {
+      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+      filter: brightness(1.2) saturate(1.4);
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3), 0 0 20px #fff5;
+    }
+
+    /* ✨ hiệu ứng ánh sáng lướt qua */
+    .fancy-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: skewX(-20deg);
+    }
+
+    .image-container:hover .fancy-img::after {
+      animation: shine 0.75s forwards;
+    }
+
+    @keyframes shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    .fancy-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .fancy-img-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+    }
+
+    .fancy-img-wrapper:hover::after {
+      animation: shine 0.8s forwards;
+    }
         }
         h1 {
             color: #0077cc;
@@ -32,6 +100,10 @@
         <p> </p>
         <p>Chúc bạn một ngày vui vẻ!</p>
     </div>
-    <img src="xe.png" alt="oh ho" width="300">
+      <div class="image-container">
+    <div class="fancy-img-wrapper">
+      <img class="fancy-img" src="xe.png" alt="Ảnh có hiệu ứng">
+    </div>
+  </div>
 </body>
 </html>
